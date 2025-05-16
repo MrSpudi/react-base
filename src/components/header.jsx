@@ -1,11 +1,18 @@
-import logo from '/logo-name.svg'
+import { useState } from 'react'
+import logo from '/vite.svg'
 
 export default function Header(){
-    const now = new Date()
+  let now = new Date().toLocaleTimeString()
+  const [time,setTime] = useState(now)
+  
+setInterval(()=>{
+  setTime(() => new Date().toLocaleTimeString())
+},1000)
+
     return (
       <header>
-        <img src={logo} alt={'Result'} />
-        <span>Время сейчас {now.toLocaleTimeString()}</span>
+        <img src={logo} alt={'vite'} />
+        <span>Время сейчас {time}</span>
       </header>
   )
 }
